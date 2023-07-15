@@ -2,19 +2,19 @@ module.exports = class EventController {
 
     static participants = [
         {
-            userId: '144592903522484224',
+            userId: '',
             username: 'nextstagegg',
             startTemp: '00:00:00',
             endTemp: ''
         },
         {
-            userId: '144592903522484224',
+            userId: '',
             username: 'nextstagegg',
             startTemp: '00:00:00',
             endTemp: ''
         },
         {
-            userId: '144592903522484224',
+            userId: '',
             username: 'nextstagegg',
             startTemp: '00:00:00',
             endTemp: ''
