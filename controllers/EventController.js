@@ -1,6 +1,29 @@
 module.exports = class EventController {
 
-    static participants = []
+    static participants = [
+        {
+            userId: '144592903522484224',
+            username: 'nextstagegg',
+            startTemp: '00:00:00',
+            endTemp: ''
+        },
+        {
+            userId: '144592903522484224',
+            username: 'nextstagegg',
+            startTemp: '00:00:00',
+            endTemp: ''
+        },
+        {
+            userId: '144592903522484224',
+            username: 'nextstagegg',
+            startTemp: '00:00:00',
+            endTemp: ''
+        }
+    ]
+
+    static convert(val) {
+        return getVal(val)
+    }
 
     static idUser = 0
     static eventStarted = false
@@ -12,10 +35,12 @@ module.exports = class EventController {
     static voiceChatId = ""
 
 
-    static temp
+    static temp = timestamp
+
 
     static iniciar() {
-        start()
+        delay(1000 * 60).then(() => { start() })
+
     }
 
     static termina() {
@@ -37,6 +62,8 @@ module.exports = class EventController {
         console.log(listParyEvent)
     }
 
+
+
 }
 
 
@@ -44,6 +71,20 @@ module.exports = class EventController {
 //* -------------------------------- Cronometro --------------------------------
 
 var listParyEvent = []
+
+
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//! converte o valor 
+function getVal(val) {
+    multiplier = val.substr(-1).toLowerCase();
+    if (multiplier == "k")
+        return parseFloat(val) * 1000;
+    else if (multiplier == "m")
+        return parseFloat(val) * 1000000;
+}
 
 
 //! Variaves do cronometro
@@ -54,7 +95,7 @@ var ss = 0;
 var tempo = 1000;
 var cron;
 
-var timestamp;
+var timestamp = (hh < 10 ? '0' + hh : hh) + ':' + (mm < 10 ? '0' + mm : mm) + ':' + (ss < 10 ? '0' + ss : ss);
 
 //! funções do cronometro
 function start() {
@@ -88,6 +129,8 @@ function timer() {
 
     //? Retorna o valor tratado
     timestamp = format;
+    this.temp = timestamp
+    console.log(this.temp)
 
     return format;
 }
